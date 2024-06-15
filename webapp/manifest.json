@@ -1,0 +1,158 @@
+{
+  "_version": "1.59.0",
+  "sap.app": {
+    "id": "provafcl",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.12.5",
+      "toolsId": "3de46e2c-2c32-408b-8791-eb84041de548"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/northwind/northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "config": {
+			"fullWidth": true
+		},
+    "dependencies": {
+      "minUI5Version": "1.124.1",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "provafcl.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "provafcl.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "RouteHome",
+          "pattern": ":?query:",
+          "target": [
+            "TargetHome"
+          ]
+        },
+        {
+          "name": "ProductFCL",
+          "pattern": "mainProducts",
+          "target": [
+              "detailProduct",
+              "masterProduct"
+          ]
+        },
+        {
+					"name": "DetailProduct",
+					"pattern": "detailProduct/{product}",
+					"target": [
+						"detailProduct",
+						"masterProduct"
+					]
+				}
+      ],
+      "targets": {
+        "TargetHome": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Home",
+          "viewName": "Home"
+        },
+        "FCLProduct":{
+          "viewName": "Products/flexibleColumnLayoutProduct",
+          "viewId": "fclproductid"
+        },
+        "masterProduct":{
+          "viewName": "Products/masterProduct",
+          "viewId": "masterproductid",
+					"parent": "FCLProduct",
+					"controlId": "fclproduct",
+					"controlAggregation": "beginColumnPages"
+        },
+        "detailProduct":{
+          "viewName": "Products/detailProduct",
+          "viewId": "detailproductid",
+					"parent": "FCLProduct",
+					"controlId": "fclproduct",
+					"controlAggregation": "midColumnPages"
+        }
+      }
+    },
+    "rootView": {
+      "viewName": "provafcl.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}

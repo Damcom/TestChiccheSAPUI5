@@ -1,0 +1,87 @@
+<mvc:View  controllerName="provafcl.controller.Products.detailProduct"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.uxap"
+	xmlns:f="sap.ui.layout.form"
+    xmlns:m="sap.m">
+    <ObjectPageLayout upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageHeader objectTitle="{detailProduct>/data/ProductID}" objectSubtitle="{detailProduct>/data/ProductName}">
+				<m:Image  src="data:image/png;base64,{detailProduct>/data/Category/Picture}" ></m:Image>
+			</ObjectPageHeader>
+		</headerTitle>
+		<headerContent>
+			<m:ObjectAttribute title="Categoria {detailProduct>/data/Category/CategoryID} - {detailProduct>/data/Category/CategoryName}" text="{detailProduct>/data/Category/Description}"/>
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="Dettaglio Ordine">
+				<subSections>
+					<ObjectPageSubSection >
+						<m:List items="{detailProduct>/data/Order_Details/results}">
+							<m:StandardListItem
+								press="onProductPress"
+								title="{detailProduct>OrderID}"
+								description="{detailProduct>Quantity}"
+								iconDensityAware="false"
+								iconInset="false"
+								type="Active" />
+						</m:List> 
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Dettaglio Fornitore">
+				<subSections>
+					<ObjectPageSubSection >
+						<blocks>
+							<f:SimpleForm id="SimpleFormDisplay354"
+							editable="false"
+							layout="ResponsiveGridLayout"
+							title="Address"
+							labelSpanXL="4"
+							labelSpanL="4"
+							labelSpanM="12"
+							labelSpanS="12"
+							adjustLabelSpan="false"
+							emptySpanXL="0"
+							emptySpanL="0"
+							emptySpanM="0"
+							emptySpanS="0"
+							columnsXL="2"
+							columnsL="2"
+							columnsM="1"
+							singleContainerFullSize="false" >
+							<f:content>
+								<core:Title text="" />
+								<m:Label text="Address" />
+								<m:Text text="{detailProduct>/data/Supplier/Address}" />
+								<m:Label text="City" />
+								<m:Text text="{detailProduct>/data/Supplier/City}" />
+								<m:Label text="Company Name" />
+								<m:Text text="{detailProduct>/data/Supplier/CompanyName}" />
+								<m:Label text="Contact Name" />
+								<m:Text  text="{detailProduct>/data/Supplier/ContactName}" />
+								<m:Label text="Contact Title" />
+								<m:Text  text="{detailProduct>/data/Supplier/ContactTitle}" />
+								<core:Title text="" />
+								<m:Label text="Country" />
+								<m:Text  text="{detailProduct>/data/Supplier/Country}" />
+								<m:Label text="Fax" />
+								<m:Text  text="{detailProduct>/data/Supplier/Fax}" />
+								<m:Label text="Phone" />
+								<m:Text  text="{detailProduct>/data/Supplier/Phone}" />
+								<m:Label text="PostalCode" />
+								<m:Text  text="{detailProduct>/data/Supplier/PostalCode}" />
+								<m:Label text="Region" />
+								<m:Text  text="{detailProduct>/data/Supplier/Region}" />
+							</f:content>
+						</f:SimpleForm>
+						</blocks> 
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+
+	</ObjectPageLayout>
+</mvc:View>

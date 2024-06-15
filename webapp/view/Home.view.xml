@@ -1,0 +1,36 @@
+<mvc:View xmlns:f="sap.f" controllerName="provafcl.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <f:GridContainer snapToRow="true"  >
+            <f:layout>
+				<f:GridContainerSettings rowSize="5rem" columnSize="10em" gap="1rem" />
+			</f:layout>
+			<f:layoutXS>
+				<f:GridContainerSettings rowSize="10rem" columnSize="33em" gap="1rem" />
+			</f:layoutXS>
+
+            <GenericTile class="" header="Accedi a Flexible Column Layout"
+            subheader="sottotitolo" press="onNavTo" >
+                <layoutData>
+                    <f:GridContainerItemLayoutData minRows="2" columns="2" rows="1"/>
+                </layoutData>
+                <TileContent />
+            </GenericTile>
+            <GenericTile class="" header="Accedi a Flexible Column Layout"
+            subheader="sottotitolo" press="press">
+                <layoutData>
+                    <f:GridContainerItemLayoutData minRows="2" columns="2" rows="1"/>
+                </layoutData>
+                <TileContent />
+            </GenericTile>
+            <GenericTile class="" header="Accedi a Flexible Column Layout"
+            subheader="sottotitolo" press="press" >
+                <layoutData>
+                    <f:GridContainerItemLayoutData minRows="2" columns="2" rows="1"/>
+                </layoutData>
+                <TileContent />
+            </GenericTile>
+        </f:GridContainer>
+    </Page>
+</mvc:View>

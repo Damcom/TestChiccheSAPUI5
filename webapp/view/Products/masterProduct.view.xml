@@ -1,0 +1,26 @@
+<mvc:View xmlns:f="sap.f" controllerName="provafcl.controller.Products.masterProduct"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m">
+    <Page title="Master Prodotti">
+        <List
+            id="ListProduct"
+            headerText="Products"
+            items="{
+                path: '/Products',
+                events: {
+                    dataRequested: '.onProductsRequested',
+                    dataReceived: '.onProductsReceived',
+                    change: '.onProductsChange'
+                }
+                }" >
+            <StandardListItem
+                press="onProductPress"
+                title="{ProductID}"
+                description="{ProductName}"
+                iconDensityAware="false"
+                iconInset="false"
+                type="Navigation" />
+        </List>
+    </Page>
+</mvc:View>
